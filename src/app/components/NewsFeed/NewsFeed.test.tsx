@@ -37,8 +37,8 @@ describe('NewsFeed', () => {
 
     expect(screen.getByText('Description 1')).toBeInTheDocument()
     expect(screen.getByText('Description 2')).toBeInTheDocument()
-    expect(screen.getByText((content, element) => content.includes('Source 1'))).toBeInTheDocument()
-    expect(screen.getByText((content, element) => content.includes('Source 2'))).toBeInTheDocument()
+    expect(screen.getByText((content) => content.includes('Source 1'))).toBeInTheDocument()
+    expect(screen.getByText((content) => content.includes('Source 2'))).toBeInTheDocument()
   })
 
   it('handles fetch error', async () => {
