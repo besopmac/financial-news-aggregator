@@ -15,7 +15,7 @@ interface Articles {
 export default function NewsFeed() {
   const [articles, setArticles] = useState<Articles[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isError, setIsError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchNews() {
@@ -29,7 +29,7 @@ export default function NewsFeed() {
         setArticles(data)
       } catch (error) {
         console.error('Error fetching news:', error)
-        setIsError('Failed to load news. Please try again later.')
+        setError('Failed to load news. Please try again later.')
       } finally {
         setIsLoading(false)
       }
@@ -42,8 +42,8 @@ export default function NewsFeed() {
     return <div className="text-center py-4">Loading news...</div>
   }
 
-  if (isError) {
-    return <div className="text-center py-4">Error loading news</div>
+  if (error) {
+    return <div className="text-center py-4">Failed to load news. Please try again later.</div>
   }
 
   return (
